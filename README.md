@@ -1,0 +1,74 @@
+# 💈 Gabbard's Barbershop — Website
+
+A modern, mobile-responsive marketing website for **Gabbard's Barbershop**, a
+family-owned barber shop in New York. Built as a fast, self-contained static
+site with no build step required.
+
+## ✨ Features
+
+- **Black / white / gold** barbershop aesthetic with bold, urban typography
+- **Single-page layout** with smooth-scrolling navigation and a sticky top nav bar
+- Sections: Hero, About, Services & Pricing, Gallery, Booking, Testimonials,
+  Location (map embed), Footer
+- **Fully responsive / mobile-first** with a slide-in mobile menu
+- Sticky **"Book Now"** button on mobile
+- Scroll-reveal animations, hover effects, animated marquee, and fade transitions
+- Front-end **booking request form** with validation (no backend wired up)
+- **SEO optimized** for "barber shop in New York" — meta tags, Open Graph,
+  and `LocalBusiness` / `HairSalon` structured data (JSON-LD)
+- Respects `prefers-reduced-motion`
+
+## 📁 Structure
+
+```
+.
+├── index.html          # Page markup and content
+├── css/
+│   └── styles.css      # All styling (theme, layout, animations, responsive)
+├── js/
+│   └── main.js         # Nav, mobile menu, scroll reveal, sticky button, form
+├── assets/
+│   └── favicon.svg     # Barber-pole favicon
+└── README.md
+```
+
+## 🚀 Running locally
+
+No build step needed — it's plain HTML/CSS/JS. Either open `index.html`
+directly, or serve the folder:
+
+```bash
+# Python
+python3 -m http.server 8000
+# then visit http://localhost:8000
+
+# or Node
+npx serve .
+```
+
+## 🛠️ Customizing
+
+All placeholder content is easy to swap:
+
+| What | Where |
+| --- | --- |
+| Phone number | Search `(555) 555-5555` / `+15555555555` in `index.html` |
+| Address | `Location` section + footer + JSON-LD in `index.html` |
+| Hours | `Booking`, `Location`, and footer sections |
+| Services & pricing | `Services` section cards in `index.html` |
+| Social links | Footer `socials` in `index.html` |
+| Map | `Location` section `<iframe>` `src` in `index.html` |
+| Colors | CSS variables at the top of `css/styles.css` (`--gold`, `--black`, …) |
+| Gallery images | Replace the CSS `.art-*` backgrounds with real photos |
+
+### Hooking up the booking form
+
+The form currently validates input and shows a confirmation message client-side.
+To receive submissions, point it at an email/form service (e.g. Formspree,
+Netlify Forms) or your own endpoint inside the submit handler in
+`js/main.js`.
+
+---
+
+_Placeholder phone numbers, address, and reviews are included for demo purposes —
+replace them with real business details before going live._

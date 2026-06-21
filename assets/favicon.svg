@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0a0a0a"/>
+  <rect x="11" y="5" width="10" height="22" rx="5" fill="#f7f6f3"/>
+  <clipPath id="pole"><rect x="11" y="5" width="10" height="22" rx="5"/></clipPath>
+  <g clip-path="url(#pole)">
+    <g fill="#c9a227">
+      <polygon points="6,12 14,4 20,4 12,12"/>
+      <polygon points="6,20 14,12 20,12 12,20"/>
+      <polygon points="6,28 14,20 20,20 12,28"/>
+      <polygon points="14,28 22,20 26,20 18,28"/>
+      <polygon points="14,12 22,4 26,4 18,12"/>
+      <polygon points="14,20 22,12 26,12 18,20"/>
+    </g>
+  </g>
+  <rect x="10" y="4" width="12" height="3" rx="1.5" fill="#c9a227"/>
+  <rect x="10" y="25" width="12" height="3" rx="1.5" fill="#c9a227"/>
+</svg>
