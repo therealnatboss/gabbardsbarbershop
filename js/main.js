@@ -82,18 +82,30 @@
     });
   }
 
-  /* ---------- Booking form (front-end demo handling) ---------- */
+  /* ---------- Booking form (emails submissions via FormSubmit) ---------- */
+  // Appointment requests are emailed to this address. FormSubmit sends a
+  // one-time activation email here on the first submission — confirm it once
+  // and every later submission is delivered automatically. To change the
+  // destination, update this address (and confirm the new activation email).
+  var BOOKING_EMAIL = "therealnatboss@gmail.com";
+
   const form = document.getElementById("bookingForm");
   const note = document.getElementById("formNote");
 
   if (form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const defaultBtnText = submitBtn ? submitBtn.textContent : "";
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       note.classList.remove("error");
 
-      const name = form.name.value.trim();
-      const phone = form.phone.value.trim();
-      const service = form.service.value;
+      // Look up fields by id (avoid `form.name`, which resolves to the
+      // form's own name property rather than the name input).
+      const name = document.getElementById("bf-name").value.trim();
+      const phone = document.getElementById("bf-phone").value.trim();
+      const service = document.getElementById("bf-service").value;
+      const time = document.getElementById("bf-time").value;
 
       if (!name || !phone || !service) {
         note.textContent = "Please fill in your name, phone, and service.";
@@ -109,10 +121,51 @@
         return;
       }
 
-      // No backend is wired up — confirm the request was captured.
-      note.textContent =
-        "Thanks, " + name + "! We'll call you to confirm your " + service + " appointment.";
-      form.reset();
+      // Send the request to the shop's inbox via FormSubmit (no backend needed).
+      note.textContent = "Sending your request…";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
+
+      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(BOOKING_EMAIL), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          _subject: "New appointment request — Gabbard's Barbershop",
+          _template: "table",
+          _captcha: "false",
+          Name: name,
+          Phone: phone,
+          Service: service,
+          "Preferred time": time || "Not specified"
+        })
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Request failed (" + res.status + ")");
+          return res.json();
+        })
+        .then(function () {
+          note.classList.remove("error");
+          note.textContent =
+            "Thanks, " + name + "! Your request was sent — we'll call you to confirm your " +
+            service + " appointment.";
+          form.reset();
+        })
+        .catch(function () {
+          note.classList.add("error");
+          note.textContent =
+            "Sorry — we couldn't send that. Please call us at (555) 555-5555.";
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = defaultBtnText;
+          }
+        });
     });
   }
 

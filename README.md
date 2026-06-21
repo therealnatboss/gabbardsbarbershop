@@ -14,7 +14,7 @@ site with no build step required.
 - Sticky **"Book Now"** button on mobile
 - Real barbershop **photography** in the hero, About section, and gallery
 - Scroll-reveal animations, hover effects, animated marquee, and fade transitions
-- Front-end **booking request form** with validation (no backend wired up)
+- **Booking request form** that emails submissions to the shop (via FormSubmit — no backend needed)
 - **SEO optimized** for "barber shop in New York" — meta tags, Open Graph,
   and `LocalBusiness` / `HairSalon` structured data (JSON-LD)
 - Respects `prefers-reduced-motion`
@@ -63,12 +63,19 @@ All placeholder content is easy to swap:
 | Colors | CSS variables at the top of `css/styles.css` (`--gold`, `--black`, …) |
 | Photos | Swap the files in `assets/img/` (keep the names) or repoint the `.art-*` / `.hero-bg` / `.about-art-inner` rules in `css/styles.css` |
 
-### Hooking up the booking form
+### Booking form → email
 
-The form currently validates input and shows a confirmation message client-side.
-To receive submissions, point it at an email/form service (e.g. Formspree,
-Netlify Forms) or your own endpoint inside the submit handler in
-`js/main.js`.
+The form validates input, then POSTs the request to [FormSubmit](https://formsubmit.co/),
+which emails it to the shop. No server required.
+
+- **Change the destination address:** edit `BOOKING_EMAIL` near the top of the
+  booking handler in `js/main.js`.
+- **First-time activation:** the first submission to a new address triggers a
+  one-time confirmation email from FormSubmit — click the link in it once, and
+  every later submission is delivered automatically.
+- **Hide the address from the page (optional):** after activating, FormSubmit
+  gives a random alias you can use in place of the raw email so bots can't
+  scrape it.
 
 ## 🖼️ Photo credits & licensing
 
