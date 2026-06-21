@@ -12,6 +12,7 @@ site with no build step required.
   Location (map embed), Footer
 - **Fully responsive / mobile-first** with a slide-in mobile menu
 - Sticky **"Book Now"** button on mobile
+- Real barbershop **photography** in the hero, About section, and gallery
 - Scroll-reveal animations, hover effects, animated marquee, and fade transitions
 - Front-end **booking request form** with validation (no backend wired up)
 - **SEO optimized** for "barber shop in New York" — meta tags, Open Graph,
@@ -28,7 +29,8 @@ site with no build step required.
 ├── js/
 │   └── main.js         # Nav, mobile menu, scroll reveal, sticky button, form
 ├── assets/
-│   └── favicon.svg     # Barber-pole favicon
+│   ├── favicon.svg     # Barber-pole favicon
+│   └── img/            # Barbershop photography (hero, about, gallery)
 └── README.md
 ```
 
@@ -59,7 +61,7 @@ All placeholder content is easy to swap:
 | Social links | Footer `socials` in `index.html` |
 | Map | `Location` section `<iframe>` `src` in `index.html` |
 | Colors | CSS variables at the top of `css/styles.css` (`--gold`, `--black`, …) |
-| Gallery images | Replace the CSS `.art-*` backgrounds with real photos |
+| Photos | Swap the files in `assets/img/` (keep the names) or repoint the `.art-*` / `.hero-bg` / `.about-art-inner` rules in `css/styles.css` |
 
 ### Hooking up the booking form
 
@@ -67,6 +69,16 @@ The form currently validates input and shows a confirmation message client-side.
 To receive submissions, point it at an email/form service (e.g. Formspree,
 Netlify Forms) or your own endpoint inside the submit handler in
 `js/main.js`.
+
+## 🖼️ Photo credits & licensing
+
+The photographs in `assets/img/` are royalty-free barbershop stock images
+sourced from the free, open [`codewithsadee/barber`](https://github.com/codewithsadee/barber)
+template (stated by its author as free to use). They're great for launching,
+but for a real shop you'll get the most mileage from **photos of your own
+barbers, cuts, and space** — just drop replacements into `assets/img/` using
+the same filenames. Before any commercial launch, confirm you have the rights
+to every image you ship.
 
 ---
 

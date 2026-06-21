@@ -279,9 +279,12 @@ ul { list-style: none; padding: 0; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 80% at 70% 10%, rgba(201, 162, 39, 0.16), transparent 55%),
-    radial-gradient(90% 70% at 20% 90%, rgba(201, 162, 39, 0.08), transparent 60%),
-    linear-gradient(160deg, #161616 0%, #0a0a0a 55%, #050505 100%);
+    linear-gradient(100deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.78) 36%, rgba(10, 10, 10, 0.42) 66%, rgba(10, 10, 10, 0.55) 100%),
+    radial-gradient(120% 80% at 78% 12%, rgba(201, 162, 39, 0.18), transparent 55%),
+    url("../assets/img/hero.jpg");
+  background-size: cover;
+  background-position: center 28%;
+  background-repeat: no-repeat;
 }
 /* subtle barber-pole stripe texture */
 .hero-bg::after {
@@ -416,30 +419,13 @@ ul { list-style: none; padding: 0; }
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
   background:
-    radial-gradient(80% 60% at 50% 30%, rgba(201, 162, 39, 0.18), transparent 60%),
-    linear-gradient(160deg, #1d1e22, #0c0d0f);
+    linear-gradient(to top, rgba(8, 8, 8, 0.7) 0%, rgba(8, 8, 8, 0.12) 42%, transparent 70%),
+    url("../assets/img/about.jpg");
+  background-size: cover;
+  background-position: center;
   border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   box-shadow: var(--shadow);
-}
-.about-art-inner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.03) 0 14px,
-    transparent 14px 28px
-  );
-}
-.scissors-icon {
-  width: 58%;
-  color: var(--gold);
-  filter: drop-shadow(0 10px 24px rgba(201, 162, 39, 0.3));
-  position: relative;
 }
 .about-art-badge {
   position: absolute;
@@ -610,39 +596,13 @@ ul { list-style: none; padding: 0; }
 }
 .gallery-item:hover::after { border-color: var(--gold); }
 
-/* gallery placeholder artwork (CSS-only, themed) */
-.art-fade {
-  background:
-    linear-gradient(180deg, #0b0b0b 0%, #2a2a2a 45%, #555 70%, #0b0b0b 100%),
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 5px);
-  background-blend-mode: overlay;
-}
-.art-beard {
-  background:
-    radial-gradient(60% 70% at 50% 38%, #3a2f1c, transparent 60%),
-    linear-gradient(160deg, #1a1408, #0a0a0a);
-}
-.art-tools {
-  background:
-    repeating-linear-gradient(45deg, #1a1a1a 0 14px, #232323 14px 28px),
-    radial-gradient(50% 50% at 50% 50%, rgba(201,162,39,0.25), transparent 70%);
-}
-.art-classic {
-  background:
-    radial-gradient(70% 60% at 50% 35%, #2c2c30, transparent 65%),
-    linear-gradient(160deg, #18181b, #060606);
-}
-.art-shave {
-  background:
-    radial-gradient(60% 50% at 50% 40%, rgba(230,195,77,0.3), transparent 60%),
-    linear-gradient(160deg, #20211f, #0a0b0a);
-}
-.art-interior {
-  background:
-    linear-gradient(180deg, rgba(201,162,39,0.12), transparent 40%),
-    repeating-linear-gradient(90deg, #141414 0 40px, #1b1b1b 40px 80px),
-    linear-gradient(160deg, #1a1a1a, #080808);
-}
+/* gallery artwork (real barbershop photography) */
+.art-fade { background-image: url("../assets/img/fade.jpg"); }
+.art-beard { background-image: url("../assets/img/beard.jpg"); }
+.art-tools { background-image: url("../assets/img/tools.jpg"); }
+.art-classic { background-image: url("../assets/img/classic.jpg"); }
+.art-shave { background-image: url("../assets/img/shave.jpg"); }
+.art-detailing { background-image: url("../assets/img/detailing.jpg"); }
 
 /* ---------- Booking ---------- */
 .booking {
